@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/DataverseShowcase.Core/DataverseShowcase.Core.csproj" />
+    <Project Path="src/DataverseShowcase.Plugins/DataverseShowcase.Plugins.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/DataverseShowcase.Core.Tests/DataverseShowcase.Core.Tests.csproj" />
+    <Project Path="tests/DataverseShowcase.Plugins.Tests/DataverseShowcase.Plugins.Tests.csproj" />
+  </Folder>
+</Solution>

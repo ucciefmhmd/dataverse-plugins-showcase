@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <!-- Dataverse runs plugins on .NET Framework 4.6.2 -->
+    <TargetFramework>net462</TargetFramework>
+
+    <!-- Dataverse only registers strong-named plugin assemblies. This key is a public sample key: use your own. -->
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\..\DataverseShowcase.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CrmSdk.CoreAssemblies" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Compile the business rules into this assembly instead of referencing them, so there is a
+         single DLL to register (Dataverse does not resolve dependent assemblies for classic plugins). -->
+    <Compile Include="..\DataverseShowcase.Core\**\*.cs" Exclude="..\DataverseShowcase.Core\obj\**;..\DataverseShowcase.Core\bin\**" LinkBase="Core" />
+  </ItemGroup>
+
+</Project>
