@@ -29,7 +29,7 @@ jobs:
         run: dotnet test --no-build -c Release
 
       - name: Upload signed plugin assembly
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: DataverseShowcase.Plugins
           path: src/DataverseShowcase.Plugins/bin/Release/net462/DataverseShowcase.Plugins.dll
