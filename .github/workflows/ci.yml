@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    # The plugin tests run on .NET Framework 4.8, which needs Windows.
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+
+      - name: Restore
+        run: dotnet restore
+
+      - name: Build (warnings are errors)
+        run: dotnet build --no-restore -c Release
+
+      - name: Test
+        run: dotnet test --no-build -c Release
+
+      - name: Upload signed plugin assembly
+        uses: actions/upload-artifact@v4
+        with:
+          name: DataverseShowcase.Plugins
+          path: src/DataverseShowcase.Plugins/bin/Release/net462/DataverseShowcase.Plugins.dll
